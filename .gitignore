@@ -36,4 +36,4 @@ yarn-error.log*
 next-env.d.ts
 
 # URL's not to be exposed
-drizzle.config.js
+ drizzle.config.js
