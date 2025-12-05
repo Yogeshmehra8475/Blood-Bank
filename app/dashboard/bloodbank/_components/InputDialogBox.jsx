@@ -37,7 +37,8 @@ const InputDialogBox = ({ onBankAdded }) => {
       return
     }
 
-    setloading(true)
+    setloading(true);
+    const bloodGroupArray = bloodGroups.split(',');
     try {
       const result = await db.insert(bloodBankData).values({
         name: name,
@@ -45,9 +46,9 @@ const InputDialogBox = ({ onBankAdded }) => {
         country: country.name,
         state: state.name,
         city: city,
-        bloodGroups: bloodGroups,
+        bloodGroups: bloodGroupArray,
         telephoneNumber: telephoneNumber,
-      })
+      });
 
       if (result) {
         toast.success("Blood Bank Added Successfully!")
@@ -78,9 +79,9 @@ const InputDialogBox = ({ onBankAdded }) => {
 
   return (
     <dialog id="blood_bank_dialog" className="modal">
-      <div className="modal-box w-11/12 max-w-4xl">
+      <div className="w-11/12 max-w-4xl modal-box">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-bold text-lg font-serif">Add Blood Bank</h3>
+          <h3 className="font-serif text-lg font-bold">Add Blood Bank</h3>
           <button
             onClick={() => document.getElementById('blood_bank_dialog').close()}
             className="btn btn-sm btn-ghost"
@@ -91,10 +92,10 @@ const InputDialogBox = ({ onBankAdded }) => {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Blood Bank Name */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <label className="form-control w-full">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <label className="w-full form-control">
               <div className="label">
-                <span className="label-text font-semibold flex items-center gap-2">
+                <span className="flex items-center gap-2 font-semibold label-text">
                   <SquareUserRound width={20} height={20} />
                   Blood Bank Name
                 </span>
@@ -102,16 +103,16 @@ const InputDialogBox = ({ onBankAdded }) => {
               <input
                 type="text"
                 placeholder="Enter Blood Bank Name"
-                className="input input-bordered w-full"
+                className="w-full input input-bordered"
                 value={name}
                 onChange={(e) => setname(e.target.value)}
               />
             </label>
 
             {/* Address */}
-            <label className="form-control w-full">
+            <label className="w-full form-control">
               <div className="label">
-                <span className="label-text font-semibold flex items-center gap-2">
+                <span className="flex items-center gap-2 font-semibold label-text">
                   <MapPin width={20} height={20} />
                   Address
                 </span>
@@ -119,7 +120,7 @@ const InputDialogBox = ({ onBankAdded }) => {
               <input
                 type="text"
                 placeholder="Enter Address"
-                className="input input-bordered w-full"
+                className="w-full input input-bordered"
                 value={address}
                 onChange={(e) => setaddress(e.target.value)}
               />
@@ -127,9 +128,9 @@ const InputDialogBox = ({ onBankAdded }) => {
           </div>
 
           {/* Telephone Number */}
-          <label className="form-control w-full">
+          <label className="w-full form-control">
             <div className="label">
-              <span className="label-text font-semibold flex items-center gap-2">
+              <span className="flex items-center gap-2 font-semibold label-text">
                 <Phone width={20} height={20} />
                 Telephone Number
               </span>
@@ -137,17 +138,17 @@ const InputDialogBox = ({ onBankAdded }) => {
             <input
               type="tel"
               placeholder="Enter Telephone Number"
-              className="input input-bordered w-full"
+              className="w-full input input-bordered"
               value={telephoneNumber}
               onChange={(e) => settelephoneNumber(e.target.value)}
             />
           </label>
 
           {/* Country */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <label className="form-control w-full">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <label className="w-full form-control">
               <div className="label">
-                <span className="label-text font-semibold flex items-center gap-2">
+                <span className="flex items-center gap-2 font-semibold label-text">
                   <Flag width={20} height={20} />
                   Country
                 </span>
@@ -157,7 +158,7 @@ const InputDialogBox = ({ onBankAdded }) => {
                   setCountrycode(e.target.value)
                   setCountry(Country.getCountryByCode(e.target.value))
                 }}
-                className="select select-bordered w-full"
+                className="w-full select select-bordered"
               >
                 <option disabled selected>Select Country</option>
                 {countrydata.map((option, idx) => (
@@ -167,16 +168,16 @@ const InputDialogBox = ({ onBankAdded }) => {
             </label>
 
             {/* State */}
-            <label className="form-control w-full">
+            <label className="w-full form-control">
               <div className="label">
-                <span className="label-text font-semibold">State</span>
+                <span className="font-semibold label-text">State</span>
               </div>
               <select
                 onChange={(v) => {
                   setstatecode(v.target.value)
                   setState(State.getStateByCodeAndCountry((v.target.value), countrycode))
                 }}
-                className="select select-bordered w-full"
+                className="w-full select select-bordered"
               >
                 <option disabled selected>Select State</option>
                 {statedata.map((option, idx) => (
@@ -186,13 +187,13 @@ const InputDialogBox = ({ onBankAdded }) => {
             </label>
 
             {/* City */}
-            <label className="form-control w-full">
+            <label className="w-full form-control">
               <div className="label">
-                <span className="label-text font-semibold">City</span>
+                <span className="font-semibold label-text">City</span>
               </div>
               <select
                 onChange={(v) => setcity(v.target.value)}
-                className="select select-bordered w-full"
+                className="w-full select select-bordered"
               >
                 <option disabled selected>Select City</option>
                 {citydata.map((option, idx) => (
@@ -203,9 +204,9 @@ const InputDialogBox = ({ onBankAdded }) => {
           </div>
 
           {/* Blood Groups */}
-          <label className="form-control w-full">
+          <label className="w-full form-control">
             <div className="label">
-              <span className="label-text font-semibold flex items-center gap-2">
+              <span className="flex items-center gap-2 font-semibold label-text">
                 <Droplet width={20} height={20} className="text-red-500" />
                 Available Blood Groups (comma separated)
               </span>
@@ -213,7 +214,7 @@ const InputDialogBox = ({ onBankAdded }) => {
             <input
               type="text"
               placeholder="e.g., O+, O-, A+, A-, B+, B-, AB+, AB-"
-              className="input input-bordered w-full"
+              className="w-full input input-bordered"
               value={bloodGroups}
               onChange={(e) => setbloodGroups(e.target.value)}
             />
