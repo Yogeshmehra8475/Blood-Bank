@@ -5,6 +5,6 @@ export default defineConfig({
     out: './drizzle',
     dialect:'postgresql',
     dbCredentials: {
-        url: 'postgresql://neondb_owner:npg_q9HF2JTvaioE@ep-sweet-mud-a4nnwh6i-pooler.us-east-1.aws.neon.tech/blood-donar?sslmode=require&channel_binding=require'
+        url: process.env.NEXT_PUBLIC_CLERK_DATABASE_CONFIG
     }
 })
