@@ -47,7 +47,7 @@ function randomName() {
 
 function randomEmail(name) {
   const n = name.toLowerCase().replace(/[^a-z]/g, ".");
-  return `${n}${randInt(1, 999)}@example.com`;
+  return `${n}${randInt(1000, 9999)}@example.com`;
 }
 
 function randomBirthdateFromAge(age) {
@@ -86,7 +86,7 @@ function generateDummyEntries(count = 100) {
 }
 
 // Generate 200 entries (original 100 + next 100 requested)
-const data = generateDummyEntries(200);
+const data = generateDummyEntries(100);
 
 export async function seedAll() {
   try {
