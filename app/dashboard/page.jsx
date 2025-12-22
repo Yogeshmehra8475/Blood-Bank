@@ -17,12 +17,11 @@ const Dashboard = () => {
 
   const [loading, setloading] = useState(false)
   {/* Getting country */ }
-  const countrydata = Country.getAllCountries();
-  const [countrycode, setCountrycode] = useState();
-  const [country, setCountry] = useState('');
+  const [countrycode] = useState("IN");
+  const [country] = useState(Country.getCountryByCode("IN"));
 
   {/* Getting State */ }
-  const statedata = State.getStatesOfCountry(countrycode);
+  const statedata = State.getStatesOfCountry("IN");
   const [statecode, setstatecode] = useState();
   const [state, setState] = useState('');
 
@@ -66,27 +65,13 @@ const Dashboard = () => {
   return (
     <div data-theme='' className='p-10'>
       <div className='flex justify-between'>
-        <h2 className='font-bold text-2xl font-serif'>Want Blood</h2>
-        <div className='btn-error btn btn-sm rounded-full text-black'><User2 className='w-4 font-bold'/> <span className='hidden md:block'>Total registered </span>: <sapn className='font-bold text-xl'>{allusers}</sapn></div>
+        <h2 className='font-serif text-2xl font-bold'>Want Blood</h2>
+        <div className='text-black rounded-full btn-error btn btn-sm'><User2 className='w-4 font-bold'/> <span className='hidden md:block'>Total registered </span>: <sapn className='text-xl font-bold'>{allusers}</sapn></div>
       </div>
       <form
         onSubmit={handleSubmit}
-        className='w-full p-4 my-4 border-4 shadow-md rounded-lg mx-auto '>
-        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3 '>
-          {/* Country */}
-          <select
-            onChange={(e) => {
-              setCountrycode(e.target.value)
-              setCountry(Country.getCountryByCode(e.target.value))
-            }}
-
-            className="select flex mx-auto my-5 select-error w-full max-w-xs">
-            <option selected disabled>Enter Country</option>
-            {countrydata.map((option, idx) => (
-              <option key={idx}
-                value={option.isoCode}>{option.name}</option>
-            ))}
-          </select>
+        className='w-full p-4 mx-auto my-4 border-4 rounded-lg shadow-md '>
+        <div className='grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3 '>
 
           {/* State */}
           <select
@@ -94,7 +79,7 @@ const Dashboard = () => {
               setstatecode(v.target.value)
               setState(State.getStateByCodeAndCountry((v.target.value), countrycode))
             }}
-            className="select flex mx-auto my-5 select-error w-full max-w-xs">
+            className="flex w-full max-w-xs mx-auto my-5 select select-error">
             <option disabled selected>Enter State</option>
             {statedata.map((option, idx) => (
               <option key={idx}
@@ -105,7 +90,7 @@ const Dashboard = () => {
           {/* City */}
           <select
             onChange={(v) => setcity(v.target.value)}
-            className="select flex mx-auto my-5 select-error w-full max-w-xs">
+            className="flex w-full max-w-xs mx-auto my-5 select select-error">
             <option disabled selected>Enter City</option>
             {citydata.map((option, idx) => (
               <option
@@ -116,7 +101,7 @@ const Dashboard = () => {
           {/* Blood Group */}
           <select
             onChange={(e) => setbloodgrp(e.target.value)}
-            className="select flex mx-auto my-5 select-error w-full max-w-xs">
+            className="flex w-full max-w-xs mx-auto my-5 select select-error">
             <option disabled selected>Enter Blood Group</option>
             {BloodGroup.map((option, idx) => (
               <option key={idx}>{option}</option>
@@ -126,7 +111,7 @@ const Dashboard = () => {
         </div>
         <button
           disabled={loading}
-          className='btn w-full my-5 btn-primary rounded-lg' type='submit'>
+          className='w-full my-5 rounded-lg btn btn-primary' type='submit'>
           {loading &&
             <span className='loading loading-bars'></span>
           }
@@ -139,8 +124,8 @@ const Dashboard = () => {
 
       {/* Displaying Data of the users in the window */}
       {bloodInfo &&
-        <div className='w-full p-4 my-4 border-4 shadow-md rounded-lg mx-auto' >
-          <h2 className='font-bold text-2xl font-serif'>Donars in {city}, {state.name}</h2>
+        <div className='w-full p-4 mx-auto my-4 border-4 rounded-lg shadow-md' >
+          <h2 className='font-serif text-2xl font-bold'>Donars in {city}, {state.name}</h2>
           {bloodInfo.length > 0 ?
             <div className={`${bloodInfo.length > 0 ? 'grid grid-cols-1 xl:grid-cols-2 my-3 gap-4' : 'flex items-center justify-center'} `}>
               {bloodInfo.map((info, idx) => (
@@ -148,7 +133,7 @@ const Dashboard = () => {
               ))}
             </div>
             :
-            <h2 className='text-xl text-center text-red-700 font-bold'>No Donars registered in this city</h2>
+            <h2 className='text-xl font-bold text-center text-red-700'>No Donars registered in this city</h2>
           }
         </div>
       }

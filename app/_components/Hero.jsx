@@ -12,30 +12,30 @@ const Hero = () => {
                 ></div>
 
                 <div
-                    className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:justify-end h-screen lg:items-center lg:px-8"
+                    className="relative h-screen max-w-screen-xl px-4 py-32 mx-auto sm:px-6 lg:flex lg:justify-end lg:items-center lg:px-8"
                 >
-                    <div className="max-w-xl max-lg:mx-auto text-center ltr:sm:text-left rtl:sm:text-right">
+                    <div className="max-w-xl text-center max-lg:mx-auto ltr:sm:text-left rtl:sm:text-right">
                         <h1 className="text-3xl font-extrabold sm:text-stone-400 md:text-slate-500 sm:text-5xl">
                             Let help everyone and
 
                             <strong className="block font-extrabold text-rose-500"> Save Lives </strong>
                         </h1>
 
-                        <p className="mt-4 max-w-lg md:text-slate-500 font-bold sm:text-xl/relaxed">
+                        <p className="max-w-lg mt-4 font-bold md:text-slate-500 sm:text-xl/relaxed">
                             Lets take a step and try to become a potential doner and save lives.
                         </p>
 
-                        <div className="mt-8 flex flex-wrap gap-4 text-center">
+                        <div className="flex flex-wrap gap-4 mt-8 text-center">
                             <Link
                                 href="/dashboard"
-                                className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 lg:w-auto"
+                                className="block w-full px-12 py-3 text-sm font-medium text-white rounded shadow bg-rose-600 hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 lg:w-auto"
                             >
                                 Get Started
                             </Link>
 
                             <Link
                                 href="#"
-                                className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 lg:w-auto"
+                                className="block w-full px-12 py-3 text-sm font-medium bg-white rounded shadow text-rose-600 hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 lg:w-auto"
                             >
                                 Learn More
                             </Link>

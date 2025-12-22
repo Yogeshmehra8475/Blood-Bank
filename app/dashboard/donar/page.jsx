@@ -20,7 +20,7 @@ const Donar = () => {
       .from(userdata)
       .where(
         and(eq(userdata.usermail, user?.primaryEmailAddress?.emailAddress))
-      );
+      )
     setme(result[0]);
   };
 

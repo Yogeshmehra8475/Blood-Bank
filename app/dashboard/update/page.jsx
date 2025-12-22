@@ -43,8 +43,8 @@ const Update = () => {
     /* Country Selection */
   }
   const countrydata = Country.getAllCountries();
-  const [UserCountryCode, setUserCountryCode] = useState(userInfo?.country);
-  const [UserCountry, setUserCountry] = useState("");
+  const [UserCountryCode, setUserCountryCode] = useState(userInfo?.country ?? "IN");
+  const [UserCountry, setUserCountry] = useState("India");
 
   {
     /* State selection */
@@ -299,6 +299,7 @@ const Update = () => {
           </label>
           <label className="w-full">
             <select
+            disabled
               onChange={(e) => {
                 setUserCountryCode(e.target.value);
                 setUserCountry(Country.getCountryByCode(e.target.value));
