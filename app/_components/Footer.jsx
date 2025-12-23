@@ -59,7 +59,7 @@ const Footer = () => {
 				<div className="space-y-4">
 					<h4 className="font-semibold text-slate-100">Contact</h4>
 					<p className="text-sm text-slate-300">Email: <a href="mailto:help@blood.example" className="hover:text-white">help@blood.example</a></p>
-					<p className="text-sm text-slate-300">Phone: <a href="tel:+1234567890" className="hover:text-white">+1 (234) 567-890</a></p>
+					<p className="text-sm text-slate-300">Phone: <a href="tel:+1234567890" className="hover:text-white">+91 (735) 190-3898</a></p>
 
 					<div className="flex items-center gap-4 mt-3">
 						<a href="#" aria-label="Twitter" className="text-slate-300 hover:text-white">
