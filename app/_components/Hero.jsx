@@ -8,7 +8,7 @@ const Hero = () => {
                 className="relative bg-[url(/BloodBg.png)] bg-cover bg-center bg-no-repeat"
             >
                 <div
-                    className="absolute inset-0 bg-gray-900/75 lg:bg-transparent lg:from-gray-900/95 md:to-gray-900/25 ltr:md:bg-gradient-to-r rtl:md:bg-gradient-to-l"
+                    className="absolute inset-0 bg-gray-200/75 lg:bg-transparent lg:from-gray-200/95 md:to-gray-900/25 ltr:md:bg-gradient-to-r rtl:md:bg-gradient-to-l"
                 ></div>
 
                 <div

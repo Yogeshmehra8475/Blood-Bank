@@ -7,10 +7,11 @@ import React from 'react'
 const Header = () => {
     const { isSignedIn } = useUser()
     return (
-        <div className='bg-white p-5 border-b shadow-sm sticky top-0'>
+        <div className='p-5 bg-white border-b shadow-sm'>
             <div className='flex items-center justify-between'>
-                <Link href={'/'}>
+                <Link href={'/'} className='flex items-center justify-between w-3/5 gap-3'>
                     <Image src={'/Blood.png'} height={50} width={100} alt='logo' />
+                    <Image src={'/logo.png'} height={100} width={250} alt='logo text' className='hidden md:block'/>
                 </Link>
 
 
@@ -34,4 +35,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Header 

@@ -40,12 +40,11 @@ const BloodBank = () => {
   const [loading, setloading] = useState(false)
   
   {/* Getting country */}
-  const countrydata = Country.getAllCountries()
-  const [countrycode, setCountrycode] = useState()
-  const [country, setCountry] = useState('')
+  const [countrycode] = useState("IN");
+  const [country] = useState(Country.getCountryByCode("IN"));
 
   {/* Getting State */}
-  const statedata = State.getStatesOfCountry(countrycode)
+  const statedata = State.getStatesOfCountry("IN")
   const [statecode, setstatecode] = useState()
   const [state, setState] = useState('')
 
@@ -119,18 +118,7 @@ const BloodBank = () => {
         onSubmit={handleSubmit}
         className='w-full p-4 mx-auto my-4 border-4 rounded-lg shadow-md'>
         <div className='grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3'>
-          {/* Country */}
-          <select
-            onChange={(e) => {
-              setCountrycode(e.target.value)
-              setCountry(Country.getCountryByCode(e.target.value))
-            }}
-            className="flex w-full max-w-xs mx-auto my-5 select select-error">
-            <option selected disabled>Enter Country</option>
-            {countrydata.map((option, idx) => (
-              <option key={idx} value={option.isoCode}>{option.name}</option>
-            ))}
-          </select>
+        
 
           {/* State */}
           <select

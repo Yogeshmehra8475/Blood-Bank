@@ -9,18 +9,16 @@ import { MapPin, Phone, Droplet, Flag, SquareUserRound, X } from 'lucide-react'
 const InputDialogBox = ({ onBankAdded }) => {
   const [loading, setloading] = useState(false)
 
-  {/* Getting country */}
-  const countrydata = Country.getAllCountries()
-  const [countrycode, setCountrycode] = useState()
-  const [country, setCountry] = useState('')
-
+  // Fixed country to India
+  const country = Country.getCountryByCode("IN")
+  
   {/* Getting State */}
-  const statedata = State.getStatesOfCountry(countrycode)
+  const statedata = State.getStatesOfCountry("IN")
   const [statecode, setstatecode] = useState()
   const [state, setState] = useState('')
 
   {/* Getting City */}
-  const citydata = City.getCitiesOfState(countrycode, statecode)
+  const citydata = City.getCitiesOfState("IN", statecode)
   const [city, setcity] = useState('')
 
   {/* Form states */}
@@ -32,7 +30,7 @@ const InputDialogBox = ({ onBankAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!name || !address || !country || !state || !city || !bloodGroups || !telephoneNumber) {
+    if (!name || !address || !state || !city || !bloodGroups || !telephoneNumber) {
       toast.error("Fill all credentials!")
       return
     }
@@ -55,8 +53,6 @@ const InputDialogBox = ({ onBankAdded }) => {
         {/* Reset form */}
         setname('')
         setaddress('')
-        setCountrycode('')
-        setCountry('')
         setstatecode('')
         setState('')
         setcity('')
@@ -154,16 +150,11 @@ const InputDialogBox = ({ onBankAdded }) => {
                 </span>
               </div>
               <select
-                onChange={(e) => {
-                  setCountrycode(e.target.value)
-                  setCountry(Country.getCountryByCode(e.target.value))
-                }}
+                disabled
                 className="w-full select select-bordered"
+                value="IN"
               >
-                <option disabled selected>Select Country</option>
-                {countrydata.map((option, idx) => (
-                  <option key={idx} value={option.isoCode}>{option.name}</option>
-                ))}
+                <option value="IN">India</option>
               </select>
             </label>
 
@@ -175,7 +166,7 @@ const InputDialogBox = ({ onBankAdded }) => {
               <select
                 onChange={(v) => {
                   setstatecode(v.target.value)
-                  setState(State.getStateByCodeAndCountry((v.target.value), countrycode))
+                  setState(State.getStateByCodeAndCountry((v.target.value), "IN"))
                 }}
                 className="w-full select select-bordered"
               >
