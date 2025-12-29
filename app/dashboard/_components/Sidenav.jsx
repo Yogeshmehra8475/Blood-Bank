@@ -35,7 +35,7 @@ const Sidenav = () => {
         },
     ]
     return (
-        <div data-theme='' className='h-screen shadow-md border'>
+        <div data-theme='' className='min-h-screen border shadow-md'>
             <div className='p-4'>
                 {menuList.map((menu, idx) => (
                     <Link href={menu.path} key={idx} className={`flex items-center gap-3 p-4 my-5 hover:bg-primary hover:text-white rounded-lg ${(path == menu.path) ? 'bg-primary text-white' : ''}`}>

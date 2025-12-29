@@ -7,13 +7,13 @@ import Bottomnav from './_components/BottonNav'
 const DashboardLayout = ({ children }) => {
     return (
         <SignedIn>
-            <div className='fixed md:w-64 hidden md:block'>
+            <div className='fixed hidden md:w-64 md:block'>
                 <Sidenav />
             </div>
             <div className='md:ml-64'>
                 {children}
             </div>
-            <div className='md:hidden w-full fixed bottom-0 left-0 right-0'>
+            <div className='fixed bottom-0 left-0 right-0 w-full md:hidden'>
                 <Bottomnav />
             </div>
         </SignedIn>
