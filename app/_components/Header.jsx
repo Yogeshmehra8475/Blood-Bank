@@ -11,7 +11,7 @@ const Header = () => {
             <div className='flex items-center justify-between'>
                 <Link href={'/'} className='flex items-center justify-between w-3/5 gap-3'>
                     <Image src={'/Blood.png'} height={50} width={100} alt='logo' />
-                    <Image src={'/logo.png'} height={100} width={250} alt='logo text' className='hidden md:block'/>
+                
                 </Link>
 
 
