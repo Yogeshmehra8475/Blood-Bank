@@ -6,7 +6,7 @@ export const userdata = pgTable("user_data", {
   usermail: varchar("Usermail").notNull().unique(),
   birthdate: varchar("DOB").notNull(),
   bloodgroup: varchar("Bloodgroup").notNull(),
-  mobile: varchar("Mobile").notNull().unique(),
+  mobile: varchar("Mobile").notNull(),
   country: varchar("Country").notNull(),
   state: varchar("State").notNull(),
   city: varchar("City").notNull(),

@@ -122,6 +122,8 @@ const Dashboard = () => {
         </button>
       </form>
 
+      {/* AI assistant removed */}
+
       {/* Displaying Data of the users in the window */}
       {bloodInfo &&
         <div className='w-full p-4 mx-auto my-4 border-4 rounded-lg shadow-md' >
